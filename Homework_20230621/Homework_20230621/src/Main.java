@@ -23,31 +23,8 @@ public class Main {
         System.out.println("Task 2: " + findIndex(arr2, 119));
     }
 
-    public static int binarySearch(int[] arr, int left, int right, int value) {
-        if (left == right) {
-            if (arr[left] == value) {
-                return left;
-            } else {
-                return -1;
-            }
-        }
-        int mid = (right - left)/2;
-        if (value == arr[left + mid])
-            return left + mid;
-        else if (value < arr[left + mid]) {
-            return binarySearch(arr, left, left + mid - 1, value);
-        } else {
-            return binarySearch(arr, left + mid + 1, right, value);
-        }
-    }
-
-    public static int findIndex(int[] arr, int value) {
-        return binarySearch(arr, 0, arr.length - 1, value);
-    }
-
+    // Task 1. --------------------------------------------------------------------------------------------------------
     public static void getElement(int[] arr1, int[] arr2, int k) {
-        int n = arr1.length;
-        int m = arr2.length;
         if (arr1[arr1.length -1] < arr2[0]) {
             firstCase(arr1, arr2, k);
         } else if (arr2[arr2.length -1] < arr1[0]) {
@@ -84,5 +61,29 @@ public class Main {
         }
         System.out.println(arr3[k-1]);
     }
+
+    // Task 2. --------------------------------------------------------------------------------------------------------
+    public static int binarySearch(int[] arr, int left, int right, int value) {
+        if (left == right) {
+            if (arr[left] == value) {
+                return left;
+            } else {
+                return -1;
+            }
+        }
+        int mid = (right - left)/2;
+        if (value == arr[left + mid])
+            return left + mid;
+        else if (value < arr[left + mid]) {
+            return binarySearch(arr, left, left + mid - 1, value);
+        } else {
+            return binarySearch(arr, left + mid + 1, right, value);
+        }
+    }
+
+    public static int findIndex(int[] arr, int value) {
+        return binarySearch(arr, 0, arr.length - 1, value);
+    }
+
 
 }
